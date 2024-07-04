@@ -155,7 +155,8 @@ public class ProductoController {
 	@PostMapping("/registrar_producto")
 	public String registrarProducto(ProductoEntity productoEntity) {
 		productoService.crearProducto(productoEntity);
-		return "redirect:/menu";
+		//return "redirect:/menu";
+		return "redirect:/lista_productos";
 	}
 	
 	@GetMapping("/editar_producto/{id}")

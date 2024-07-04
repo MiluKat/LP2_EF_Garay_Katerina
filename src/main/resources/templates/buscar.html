@@ -17,6 +17,7 @@
             <p class="card-text"><strong>Precio:</strong> <span th:text="${producto.precio}"></span></p>
             <p class="card-text"><strong>urlImagen:</strong> <span th:text="${producto.urlImagen}"></span></p>
             <a href="/lista_productos" class="btn btn-primary">Volver a la Lista</a>
+            <a th:href="@{/delete/{id}(id=${producto.productoId})}" class="btn btn-danger">Eliminar</a>
         </div>
     </div>
 </div>
