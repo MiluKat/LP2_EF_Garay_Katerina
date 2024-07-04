@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.DetallePedidoEntity;
@@ -39,11 +40,18 @@ public class ProductoController {
 		String correo = session.getAttribute("usuario").toString();
 		UsuarioEntity usuarioEntity = usuarioService.buscarUsuarioPorCorreo(correo);
 		model.addAttribute("foto", usuarioEntity.getUrlImagen());
-		
+															
 		List<ProductoEntity>productos = productoService.buscarTodosProductos();
 		model.addAttribute("productos", productos);
-														
-				return "menu";
+		
+		return "menu";
+	}
+	
+	@GetMapping("/lista_productos")
+	public String home(Model model) {
+		List<ProductoEntity>productos = productoService.buscarTodosProductos();
+		model.addAttribute("productos", productos);
+		return "lista_productos";
 	}
 	
 	@GetMapping("/agregar_producto")
@@ -55,6 +63,22 @@ public class ProductoController {
 	@PostMapping("/registrar_producto")
 	public String registrarProducto(ProductoEntity productoEntity) {
 		productoService.crearProducto(productoEntity);
+		return "redirect:/menu";
+	}
+	
+	@GetMapping("/editar_producto/{id}")
+	public String showEditarProducto(@PathVariable("id")Long id, Model model) {
+		ProductoEntity productoBuscar = productoService.buscarProductoPorId(id);
+	
+		model.addAttribute("producto", productoBuscar);
+		
+		return "editar_producto";
+	}
+	
+	@PostMapping("/editar_producto")
+	public String editarEmpleado(Model model, ProductoEntity productoEntity) {
+	
+		productoService.actualizarProducto(productoEntity);
 		return "redirect:/menu";
 	}
 	
