@@ -49,6 +49,11 @@ public class ProductoServiceImpl implements ProductoService{
 		
 	}
 
+	@Override
+	public ProductoEntity buscarProductoById(Integer id) {
+		return productoRepository.findById(id.longValue()).get();
+	}
+
 
 
 

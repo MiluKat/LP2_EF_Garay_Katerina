@@ -10,4 +10,5 @@ public interface ProductoService {
 	ProductoEntity crearProducto(ProductoEntity productoEntity);
 	ProductoEntity actualizarProducto(ProductoEntity productoEntity);
 	void eliminarProducto(Long id);
+	ProductoEntity buscarProductoById(Integer id);
 }
