@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.example.demo.entity.DetallePedidoEntity;
 import com.example.demo.entity.ProductoEntity;
 import com.example.demo.entity.UsuarioEntity;
-
+import com.example.demo.service.ProductoService;
 import com.example.demo.service.UsuarioService;
 
 
@@ -23,10 +23,10 @@ public class ProductoController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	/*@Autowired
+	@Autowired
 	private ProductoService productoService;
 	
-	@Autowired
+	/*@Autowired
 	private PdfService pdfService;*/
 	
 	@GetMapping("/menu")
@@ -38,6 +38,9 @@ public class ProductoController {
 		String correo = session.getAttribute("usuario").toString();
 		UsuarioEntity usuarioEntity = usuarioService.buscarUsuarioPorCorreo(correo);
 		model.addAttribute("foto", usuarioEntity.getUrlImagen());
+		
+		List<ProductoEntity>productos = productoService.buscarTodosProductos();
+		model.addAttribute("productos", productos);
 														
 				return "menu";
 	}
