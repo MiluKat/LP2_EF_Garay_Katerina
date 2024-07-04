@@ -79,9 +79,22 @@ public class ProductoController {
 	public String editarEmpleado(Model model, ProductoEntity productoEntity) {
 	
 		productoService.actualizarProducto(productoEntity);
-		return "redirect:/menu";
+		return "redirect:/lista_productos";
+	}
+	
+	@GetMapping("/buscar/{id}")
+	public String buscarPorId(@PathVariable("id") Long id, Model model) {
+		ProductoEntity productoEncontrado = productoService.buscarProductoPorId(id);
+		model.addAttribute("producto", productoEncontrado);
+		return "buscar";
 	}
 	
 	
+	@GetMapping("/delete/{id}")
+	public String eliminarPorId(@PathVariable("id") Long id, Model model) {
+		productoService.eliminarProducto(id);
+		return "redirect:/lista_productos";
+		
+	}
 	
 }

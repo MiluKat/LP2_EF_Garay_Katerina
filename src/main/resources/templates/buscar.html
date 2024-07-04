@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Producto</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="mb-4">Detalle del Producto</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Información del Producto</h5>
+            <p class="card-text"><strong>Id Producto:</strong> <span th:text="${producto.productoId}"></span></p>
+            <p class="card-text"><strong>Nombre:</strong> <span th:text="${producto.nombre}"></span></p>
+            <p class="card-text"><strong>Stock:</strong> <span th:text="${producto.stock}"></span></p>
+            <p class="card-text"><strong>Precio:</strong> <span th:text="${producto.precio}"></span></p>
+            <p class="card-text"><strong>urlImagen:</strong> <span th:text="${producto.urlImagen}"></span></p>
+            <a href="/lista_productos" class="btn btn-primary">Volver a la Lista</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
