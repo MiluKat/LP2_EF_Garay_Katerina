@@ -6,8 +6,8 @@ import com.example.demo.entity.ProductoEntity;
 
 public interface ProductoService {
 	List<ProductoEntity>buscarTodosProductos();
-	/*ProductoEntity buscarProductoPorId(Integer id);
+	ProductoEntity buscarProductoPorId(Long id);
 	ProductoEntity crearProducto(ProductoEntity productoEntity);
 	ProductoEntity actualizarProducto(ProductoEntity productoEntity);
-	void eliminarProducto(String id);*/
+	void eliminarProducto(Long id);
 }

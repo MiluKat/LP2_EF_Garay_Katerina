@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.DetallePedidoEntity;
 import com.example.demo.entity.ProductoEntity;
@@ -44,5 +45,19 @@ public class ProductoController {
 														
 				return "menu";
 	}
+	
+	@GetMapping("/agregar_producto")
+	public String showAgregarProducto(Model model) {
+		model.addAttribute("producto", new ProductoEntity());
+		return "agregar_producto";
+	}
+	
+	@PostMapping("/registrar_producto")
+	public String registrarProducto(ProductoEntity productoEntity) {
+		productoService.crearProducto(productoEntity);
+		return "redirect:/menu";
+	}
+	
+	
 	
 }

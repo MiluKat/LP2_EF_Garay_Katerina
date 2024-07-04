@@ -20,4 +20,39 @@ public class ProductoServiceImpl implements ProductoService{
 		return productoRepository.findAll();
 	}
 
+	@Override
+	public ProductoEntity buscarProductoPorId(Long id) {
+		return productoRepository.findById(id).get();
+	}
+
+	@Override
+	public ProductoEntity crearProducto(ProductoEntity productoEntity) {
+		return productoRepository.save(productoEntity);
+	}
+
+	@Override
+	public ProductoEntity actualizarProducto(ProductoEntity productoEntity) {
+		ProductoEntity productoBuscado = buscarProductoPorId(productoEntity.getProductoId());
+		if(productoBuscado != null) { // Si ya existe, tiene que actualizar
+			productoBuscado.setNombre(productoEntity.getNombre());
+			productoBuscado.setPrecio(productoEntity.getPrecio());
+			productoBuscado.setStock(productoEntity.getStock());
+			productoBuscado.setUrlImagen("");
+			return productoRepository.save(productoBuscado);
+		}
+		return null;
+	}
+
+	@Override
+	public void eliminarProducto(Long id) {
+		productoRepository.deleteById(id);
+		
+	}
+
+
+
+
+
+
+
 }
