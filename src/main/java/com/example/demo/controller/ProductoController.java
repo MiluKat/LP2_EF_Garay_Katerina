@@ -51,6 +51,7 @@ public class ProductoController {
 		String correo = session.getAttribute("usuario").toString();
 		UsuarioEntity usuarioEntity = usuarioService.buscarUsuarioPorCorreo(correo);
 		model.addAttribute("foto", usuarioEntity.getUrlImagen());
+		model.addAttribute("nombreUsuario", usuarioEntity.getNombre());
 															
 		List<ProductoEntity>productos = productoService.buscarTodosProductos();
 		model.addAttribute("productos", productos);
@@ -82,7 +83,7 @@ public class ProductoController {
 		return "menu";
 	}
 	
-	
+	//Agregar carrito
 	@PostMapping("/agregar_producto")
 	public String agregarProducto(HttpSession session, @RequestParam("prodId")String prod,
 			@RequestParam("cant") String cant) {
@@ -140,14 +141,26 @@ public class ProductoController {
 	
 	
 	@GetMapping("/lista_productos")
-	public String home(Model model) {
+	public String home(HttpSession session,Model model) {
+		
+		String correo = session.getAttribute("usuario").toString();
+		UsuarioEntity usuarioEntity = usuarioService.buscarUsuarioPorCorreo(correo);
+		model.addAttribute("foto", usuarioEntity.getUrlImagen());
+		model.addAttribute("nombreUsuario", usuarioEntity.getNombre());
+		
 		List<ProductoEntity>productos = productoService.buscarTodosProductos();
 		model.addAttribute("productos", productos);
 		return "lista_productos";
 	}
 	
 	@GetMapping("/agregar_producto")
-	public String showAgregarProducto(Model model) {
+	public String showAgregarProducto(HttpSession session,Model model) {
+		
+		String correo = session.getAttribute("usuario").toString();
+		UsuarioEntity usuarioEntity = usuarioService.buscarUsuarioPorCorreo(correo);
+		model.addAttribute("foto", usuarioEntity.getUrlImagen());
+		model.addAttribute("nombreUsuario", usuarioEntity.getNombre());
+		
 		model.addAttribute("producto", new ProductoEntity());
 		return "agregar_producto";
 	}
@@ -160,7 +173,13 @@ public class ProductoController {
 	}
 	
 	@GetMapping("/editar_producto/{id}")
-	public String showEditarProducto(@PathVariable("id")Long id, Model model) {
+	public String showEditarProducto(HttpSession session,@PathVariable("id")Long id, Model model) {
+		
+		String correo = session.getAttribute("usuario").toString();
+		UsuarioEntity usuarioEntity = usuarioService.buscarUsuarioPorCorreo(correo);
+		model.addAttribute("foto", usuarioEntity.getUrlImagen());
+		model.addAttribute("nombreUsuario", usuarioEntity.getNombre());
+		
 		ProductoEntity productoBuscar = productoService.buscarProductoPorId(id);
 	
 		model.addAttribute("producto", productoBuscar);
@@ -176,7 +195,13 @@ public class ProductoController {
 	}
 	
 	@GetMapping("/buscar/{id}")
-	public String buscarPorId(@PathVariable("id") Long id, Model model) {
+	public String buscarPorId(HttpSession session,@PathVariable("id") Long id, Model model) {
+		
+		String correo = session.getAttribute("usuario").toString();
+		UsuarioEntity usuarioEntity = usuarioService.buscarUsuarioPorCorreo(correo);
+		model.addAttribute("foto", usuarioEntity.getUrlImagen());
+		model.addAttribute("nombreUsuario", usuarioEntity.getNombre());
+		
 		ProductoEntity productoEncontrado = productoService.buscarProductoPorId(id);
 		model.addAttribute("producto", productoEncontrado);
 		return "buscar";

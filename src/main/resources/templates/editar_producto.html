@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+   <div class="container mt-4">
+    	<div class="profile-container d-flex align-items-center mb-4">
+        Bienvenido: <span th:text="${nombreUsuario}"></span>
+        
+        <a class="btn btn-outline-danger ml-2" th:href="@{/logout}" role="button">Cerrar sesión</a>
+    	</div>
+    </div>
 <div class="container mt-5">
     <h2 class="mb-4">Editar Producto</h2>
     <form th:action="@{/editar_producto}" th:object="${producto}" method="post">

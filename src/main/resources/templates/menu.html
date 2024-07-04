@@ -42,8 +42,9 @@
 <!--         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
 <!--     </form> -->
     <div class="form-inline my-2 my-lg-0 ml-auto">
+        Bienvenido:<span th:text="${nombreUsuario}"></span>
         <img th:src="${'/usuario_foto/' + foto}" alt="Profile" class="profile-pic">
-        <a class="btn btn-outline-danger ml-2" th:href="@{/logout}" role="button">Logout</a>
+        <a class="btn btn-outline-danger ml-2" th:href="@{/logout}" role="button">Cerrar sesión</a>
         <a class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
             <svg class="bi bi-cart3" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M1 1a.5.5 0 0 1 .5-.5h1.7l1.88 6.785a.5.5 0 0 0 .48.365h8.31a.5.5 0 0 0 .48-.365L13.8 3.5h1.7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3.612l-.47 1.692a.5.5 0 0 0 .48.608h8.682a1.5 1.5 0 1 0 1.342-2H4.572l-.47 1.692a.5.5 0 0 0 .48.608h5.747a.5.5 0 1 1 0 1H4.682l-.47 1.692a.5.5 0 0 0 .48.608h5.566a1.5 1.5 0 1 0 1.342-2H4.196l-.47 1.692a.5.5 0 0 0 .48.608h3.905a.5.5 0 1 1 0 1H3.887a1.5 1.5 0 1 0 1.342-2H2.646l-.47 1.692a.5.5 0 0 0 .48.608H5.38a.5.5 0 1 1 0 1H2.128a1.5 1.5 0 1 0 1.342-2H1V1z"/>
